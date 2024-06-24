@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clasificador de diabetes</title>
+    <title>Eficiencia energética Vite Vera</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -12,12 +12,22 @@
             background-color: #f0f0f0;
         }
         .container {
-            max-width: 600px;
+            max-width: 500px;
             margin: 50px auto;
-            padding: 20px;
+            padding: 30px;
             background-color: #fff;
-            border-radius: 8px;
+            border-radius: 50px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .tablita {
+            max-width: 500px;
+            margin: 50px auto; 
+            background-color: #fff; 
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .color {
+          
+            background-color: #4caf50;
         }
         h1 {
             text-align: center;
@@ -25,7 +35,7 @@
         }
         h3 {
             text-align: center;
-            color: #333;
+            color: #4caf50;
         }
         form {
             margin-top: 20px;
@@ -65,54 +75,146 @@
             color: #f00;
             font-weight: bold;
         }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ccc;
+        }
+        th, td {
+            padding: 10px;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Clasificador de diabetes</h1>
+        <h1>Eficiencia Energética</h1>
         <h3>Reyna De Los Angeles Vite Vera 9B</h3>
-        <form id="formulario" onsubmit="clasificarDiabetes(event)">
-            <label for="glucosa">Glucosa:</label>
-            <input type="text" id="glucosa" name="glucosa" required><br>
+        <form id="formulario" onsubmit="clasificarEficiencia(event)">
+            <label for="X1">Compacidad relativa:</label>
+            <input type="text" id="X1" name="X1" required><br>
 
-            <label for="presionSanguinea">Presión sanguínea:</label>
-            <input type="text" id="presionSanguinea" name="presionSanguinea" required><br>
+            <label for="X2">Área de superficie:</label>
+            <input type="text" id="X2" name="X2" required><br>
 
-            <label for="bmi">IMC:</label>
-            <input type="text" id="bmi" name="bmi" required><br>
+            <label for="X4">Área de techo:</label>
+            <input type="text" id="X4" name="X4" required><br>
 
-            <label for="diabetesPedigreeFunction">Función de pedigree de diabetes:</label>
-            <input type="number" id="diabetesPedigreeFunction" name="diabetesPedigreeFunction" step="any" required><br>
+            <label for="X7">Área de acristalamiento:</label>
+            <input type="number" id="X7" name="X7" step="any" required><br>
 
-            <label for="edad">Edad:</label>
-            <input type="text" id="edad" name="edad" required><br>
+            <label for="X8">Distribución del área de acristalamiento:</label>
+            <input type="text" id="X8" name="X8" required><br>
 
             <input type="submit" value="Enviar">
         </form>
+        <h3>Carga de calefacción</h3>
         <p id="resultado"></p>
+     
     </div>
+    <table class="tablita">
+        <thead>
+            <tr>
+                <th>Compacidad relativa</th>
+                <th>Área de superficie</th>
+                <th>Área de techo</th>
+                <th>Área de acristalamiento</th>
+                <th>Distribución del área de acristalamiento</th>
+                <th class="color">Carga de calefacción(Y)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>0.66</td>
+                <td>759.5</td>
+                <td>220.5</td>
+                <td>0.25</td>
+                <td>1</td>
+                <td class="color">13.17</td>
+            </tr>
+            <tr>
+                <td>0.64</td>
+                <td>784</td>
+                <td>220.5</td>
+                <td>0.25</td>
+                <td>4</td>
+                <td class="color">16.69</td>
+            </tr>
+            <tr>
+                <td>0.76</td>
+                <td>686</td>
+                <td>220.5</td>
+                <td>0.25</td>
+                <td>4</td>
+                <td class="color">12.3</td>
+            </tr>
+            <tr>
+                <td>0.66</td>
+                <td>759.5</td>
+                <td>220.5</td>
+                <td>0</td>
+                <td>0</td>
+                <td class="color">7.1</td>
+            </tr>
+            <tr>
+                <td>0.98</td>
+                <td>514.5</td>
+                <td>110.25</td>
+                <td>0.1</td>
+                <td>5</td>
+                <td class="color">24.03</td>
+            </tr>
+             <tr>
+            <td>0.76</td>
+            <td>661.5</td>
+            <td>122.5</td>
+            <td>0.1</td>
+            <td>2</td>
+            <td class="color">33.12</td>
+        </tr>
+        <tr>
+            <td>0.66</td>
+            <td>759.5</td>
+            <td>220.5</td>
+            <td>0.1</td>
+            <td>3</td>
+            <td class="color">11.53</td>
+        </tr>
+        <tr>
+            <td>0.98</td>
+            <td>514.5</td>
+            <td>110.25</td>
+            <td>0.1</td>
+            <td>5</td>
+            <td class="color">24.03</td>
+        </tr>
+        </tbody>
+    </table>
     <script>
-        function clasificarDiabetes(event) {
+        function clasificarEficiencia(event) {
             event.preventDefault();
-            const glucosa = document.getElementById('glucosa').value;
-            const presionSanguinea = document.getElementById('presionSanguinea').value;
-            const bmi = document.getElementById('bmi').value;
-            const diabetesPedigreeFunction = document.getElementById('diabetesPedigreeFunction').value;
-            const edad = document.getElementById('edad').value;
+            const X1 = document.getElementById('X1').value;
+            const X2 = document.getElementById('X2').value;
+            const X4 = document.getElementById('X4').value;
+            const X7 = document.getElementById('X7').value;
+            const X8 = document.getElementById('X8').value;
 
             fetch('/predict', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
                 },
-                body: `glucosa=${glucosa}&presionSanguinea=${presionSanguinea}&bmi=${bmi}&diabetesPedigreeFunction=${diabetesPedigreeFunction}&edad=${edad}`,
+                body: `X1=${X1}&X2=${X2}&X4=${X4}&X7=${X7}&X8=${X8}`,
             })
             .then(response => response.json())
             .then(data => {
                 if (data.error) {
                     document.getElementById('resultado').innerHTML = '<span class="error">Error: ' + data.error + '</span>';
                 } else {
-                    document.getElementById('resultado').innerText = 'El paciente ' + data.diabetes;
+                    document.getElementById('resultado').innerText = 'Predicción: ' + data.prediction;
                 }
             })
             .catch(error => {

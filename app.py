@@ -5,11 +5,10 @@ import logging
 
 app = Flask(__name__)
 
-# Configurar el registro
 logging.basicConfig(level=logging.DEBUG)
 
 # Cargar el modelo entrenado
-model = joblib.load('modeloDiabeteSEscalar.pyl')
+model = joblib.load('electricidad.pyl')
 app.logger.debug('Modelo cargado correctamente.')
 
 @app.route('/')
@@ -20,14 +19,14 @@ def home():
 def predict():
     try:
         # Obtener los datos enviados en el request
-        glucosa = float(request.form['glucosa'])
-        presion_sanguinea = float(request.form['presionSanguinea'])
-        bmi = float(request.form['bmi'])
-        diabetes_pedigree_function = float(request.form['diabetesPedigreeFunction'])
-        edad = float(request.form['edad'])
+        X1 = float(request.form['X1'])
+        X2 = float(request.form['X2'])
+        X4 = float(request.form['X4'])
+        X7 = float(request.form['X7'])
+        X8 = float(request.form['X8'])
         
         # Crear un DataFrame con los datos
-        data_df = pd.DataFrame([[glucosa, presion_sanguinea, bmi, diabetes_pedigree_function, edad]], columns=['Glucose', 'BloodPressure', 'BMI', 'DiabetesPedigreeFunction', 'Age'])
+        data_df = pd.DataFrame([[X1, X2, X4, X7, X8]], columns=['X1', 'X2', 'X4', 'X7', 'X8'])
         app.logger.debug(f'DataFrame creado: {data_df}')
         
         # Realizar predicciones
@@ -35,7 +34,7 @@ def predict():
         app.logger.debug(f'Predicción: {prediction[0]}')
         
         # Devolver las predicciones como respuesta JSON
-        return jsonify({'diabetes': "si tiene diabetes" if prediction[0] == 1 else "no tiene diabetes"})
+        return jsonify({'prediction': prediction[0]})
     except Exception as e:
         app.logger.error(f'Error en la predicción: {str(e)}')
         return jsonify({'error': str(e)}), 400
